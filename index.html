@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashley LLC.</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta name="description" content="Ashley合同会社。ライブクリエイターマネジメントとアパレルブランド Ashley。「自然の中で、自分らしく成長していく場所」を名前に持つ東京の会社です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Shippori+Mincho:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F7F5F0;
+  --bg-2:#FFFFFF;
+  --ink:#1E2622;
+  --ink-2:#5B6660;
+  --ink-3:#8E958F;
+  --green:#3C6A4E;
+  --line:rgba(30,38,34,.14);
+  --line-2:rgba(30,38,34,.32);
+  --display:"Italiana","Cormorant Garamond","Didot","Bodoni MT",serif;
+  --serif:"Cormorant Garamond","Cormorant","EB Garamond",Georgia,serif;
+  --jp:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho","YuMincho",serif;
+  --gutter:clamp(22px,4.6vw,64px);
+  --max:1360px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--jp);font-weight:400;font-size:14.5px;line-height:2.05;letter-spacing:.06em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:400}
+::selection{background:var(--green);color:#fff}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+
+/* ---------- header ---------- */
+.top{
+  position:fixed;top:0;left:0;right:0;z-index:30;
+  display:grid;grid-template-columns:1fr auto;align-items:center;
+  padding:22px var(--gutter);
+  color:#fff;
+  transition:background .5s ease,color .5s ease,padding .5s ease;
+}
+.top.scrolled{background:rgba(247,245,240,.94);color:var(--ink);padding:14px var(--gutter);backdrop-filter:blur(6px)}
+.mark{display:inline-flex;align-items:center;line-height:1}
+.mark img{height:34px;width:auto;display:block}
+.top .mark .dark{display:none}
+.top.scrolled .mark .light{display:none}
+.top.scrolled .mark .dark{display:block}
+.nav{display:flex;gap:clamp(18px,2.6vw,36px);justify-content:end;font-size:13px;letter-spacing:.22em}
+.nav a{position:relative;padding:4px 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1);transform-origin:left}
+.top .cta{display:none;justify-self:end;font-size:13px;letter-spacing:.22em;border-bottom:1px solid currentColor;padding-bottom:2px}
+@media (max-width:760px){.nav{display:none}.top .cta{display:inline-block}}
+
+/* ---------- hero ---------- */
+main{position:relative;z-index:2}
+.hero{
+  position:relative;min-height:100svh;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:140px var(--gutter) clamp(72px,10vh,120px);
+  color:#fff;
+}
+.hero .photo{position:absolute;inset:0;z-index:0}
+.hero .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 62%;display:block;transform:scale(1.06);transition:transform 6s ease-out}
+.ready .hero .photo img{transform:scale(1)}
+.hero .photo::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(20,26,22,.28) 0%,rgba(20,26,22,0) 32%),
+    linear-gradient(0deg,rgba(20,26,22,.62) 0%,rgba(20,26,22,.18) 42%,rgba(20,26,22,0) 70%);
+}
+.hero .h{position:relative;z-index:1;max-width:var(--max);margin:0 auto;width:100%}
+.hero h1{
+  font-family:var(--jp);font-weight:500;
+  font-size:clamp(34px,5.4vw,78px);
+  line-height:1.35;letter-spacing:.12em;
+  color:#fff;
+  text-wrap:balance;
+  text-shadow:0 2px 30px rgba(0,0,0,.22);
+}
+.hero h1 .l{display:block;overflow:hidden}
+.hero h1 .l span{display:block;transform:translateY(110%);transition:transform 1.4s cubic-bezier(.16,.8,.2,1)}
+.ready .hero h1 .l span{transform:none}
+.hero h1 .l:nth-child(2) span{transition-delay:.08s}
+.hero h1 .l:nth-child(3) span{transition-delay:.16s}
+.hero .lede{
+  margin:clamp(24px,3.4vw,40px) 0 0;padding:0;list-style:none;
+  font-size:15px;color:rgba(255,255,255,.92);letter-spacing:.14em;line-height:2.2;
+  opacity:0;transition:opacity 1.2s ease .5s;
+  text-shadow:0 1px 18px rgba(0,0,0,.25);
+}
+.hero .lede li{display:flex;align-items:center;gap:14px}
+.hero .lede li::before{content:"";width:18px;height:1px;background:rgba(255,255,255,.8);flex:none}
+.ready .hero .lede{opacity:1}
+.hero .scroll{
+  position:absolute;right:var(--gutter);bottom:36px;z-index:1;
+  font-family:var(--serif);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.8);
+  writing-mode:vertical-rl;display:flex;align-items:center;gap:14px;
+}
+.hero .scroll::after{content:"";width:1px;height:46px;background:rgba(255,255,255,.8);animation:drop 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (prefers-reduced-motion:reduce){
+  .hero h1 .l span,.hero .lede{transform:none;opacity:1;transition:none}
+  .hero .photo img{transform:none;transition:none}
+  .hero .scroll::after{animation:none}
+}
+@media (max-width:760px){
+  .hero{padding-bottom:72px}
+  .hero .photo img{object-position:50% 58%}
+  .hero .lede{font-size:13.5px;line-height:2.1}
+  .hero .scroll{display:none}
+}
+
+/* ---------- section scaffolding ---------- */
+section{position:relative;padding:clamp(96px,12vw,170px) 0}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,6vw,90px);align-items:end;margin-bottom:clamp(52px,7vw,96px)}
+.sec-head h2{
+  font-family:var(--jp);font-size:clamp(28px,3.6vw,44px);line-height:1.4;letter-spacing:.16em;color:var(--green);
+  display:flex;align-items:baseline;gap:22px;
+}
+.sec-head h2 em{font-family:var(--display);font-style:normal;font-size:.5em;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3)}
+.sec-head p{color:var(--ink-2);font-size:14px;max-width:32em}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr;gap:18px}}
+
+.reveal{opacity:1;transform:none}
+@media (prefers-reduced-motion:no-preference){
+  .reveal{transition:transform 1.2s cubic-bezier(.16,.8,.2,1),opacity 1.2s ease;transform:translateY(28px);opacity:.1}
+  .reveal.in{transform:none;opacity:1}
+}
+
+/* split-letter hover link */
+.sl{display:inline-flex;align-items:center;gap:16px;font-family:var(--jp);font-size:14px;letter-spacing:.24em;color:var(--ink)}
+.sl .w{display:inline-flex;overflow:hidden;line-height:1.3;height:1.3em}
+.sl .w b{display:inline-block;font-weight:400;position:relative;transition:transform .6s cubic-bezier(.2,.8,.2,1);white-space:pre}
+.sl .w b::after{content:attr(data-c);position:absolute;left:0;top:100%}
+.sl:hover .w b,.sl:focus-visible .w b{transform:translateY(-100%)}
+.sl .arrow{width:34px;height:1px;background:var(--ink-2);position:relative;transition:width .5s}
+.sl .arrow::after{content:"";position:absolute;right:0;top:-3px;width:6px;height:6px;border-top:1px solid var(--ink-2);border-right:1px solid var(--ink-2);transform:rotate(45deg)}
+.sl:hover .arrow{width:52px}
+
+/* ---------- business ---------- */
+.business{background:var(--bg-2)}
+.biz-list{border-top:1px solid var(--line)}
+.biz{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);
+  padding:clamp(48px,6vw,84px) 0;border-bottom:1px solid var(--line);
+  align-items:start;
+}
+.biz .cat{font-family:var(--serif);font-size:12px;letter-spacing:.36em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
+.biz h3{
+  font-family:var(--display);font-size:clamp(40px,6.2vw,96px);line-height:1;letter-spacing:.01em;text-transform:uppercase;color:var(--ink);
+}
+.biz h3 .jp{display:block;font-family:var(--jp);font-size:clamp(17px,1.5vw,21px);letter-spacing:.2em;color:var(--green);margin-top:18px;text-transform:none}
+.biz .body{padding-top:clamp(6px,2.4vw,44px);display:flex;flex-direction:column;gap:26px}
+.biz .body p{color:var(--ink);max-width:32em}
+.biz .meta{font-family:var(--serif);font-size:13px;letter-spacing:.2em;color:var(--ink-2);display:grid;grid-template-columns:auto 1fr;gap:6px 22px}
+.biz .meta span{font-family:var(--jp);letter-spacing:.2em;color:var(--ink-3)}
+.biz .meta b{font-weight:400;font-family:var(--jp);letter-spacing:.1em;color:var(--ink-2)}
+@media (max-width:820px){.biz{grid-template-columns:1fr}}
+
+/* ---------- philosophy ---------- */
+.philo{padding:0;background:var(--bg)}
+.philo .box{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  min-height:min(92vh,860px);
+}
+.philo .pic{position:relative;overflow:hidden;min-height:56vw}
+.philo .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 50%;display:block}
+.philo .txt{
+  display:flex;flex-direction:column;justify-content:center;gap:1.5em;
+  padding:clamp(64px,8vw,130px) clamp(28px,6vw,110px);
+  color:var(--ink);font-size:14.5px;
+}
+.philo h2{font-family:var(--jp);font-size:clamp(28px,3.4vw,46px);line-height:1.6;letter-spacing:.14em;color:var(--green);margin-bottom:.6em}
+.philo h2 .en{display:block;font-family:var(--display);font-size:.42em;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-3);margin-bottom:26px}
+.philo .txt p{max-width:30em}
+@media (max-width:820px){.philo .box{grid-template-columns:1fr}.philo .pic{min-height:68vw}}
+
+/* ---------- company ---------- */
+.company{background:var(--bg-2)}
+.company .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.company .cell{padding:clamp(26px,3vw,40px) clamp(20px,2.6vw,34px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:150px;display:flex;flex-direction:column;gap:12px}
+.company .cell .k{font-family:var(--jp);font-size:12px;letter-spacing:.24em;color:var(--ink-3)}
+.company .cell .v{font-size:15px;line-height:1.9;color:var(--ink)}
+.company .cell .v small{display:block;font-family:var(--serif);font-size:13px;letter-spacing:.14em;color:var(--ink-2)}
+.company .cell .v a{border-bottom:1px solid var(--line-2)}
+.company .cell.wide{grid-column:span 2}
+@media (max-width:900px){.company .grid{grid-template-columns:1fr 1fr}.company .cell.wide{grid-column:span 2}}
+@media (max-width:560px){.company .grid{grid-template-columns:1fr}.company .cell.wide{grid-column:span 1}}
+
+/* ---------- contact ---------- */
+.contact{background:var(--bg)}
+.contact .lead{
+  font-family:var(--jp);font-size:clamp(24px,3.4vw,44px);line-height:1.6;letter-spacing:.14em;color:var(--ink);max-width:22em;margin-bottom:12px;
+}
+.contact .sub{color:var(--ink-2);margin-bottom:clamp(48px,6vw,80px);max-width:36em}
+.contact .grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,7vw,120px);align-items:start}
+.direct{display:grid;gap:26px}
+.direct .k{font-family:var(--jp);font-size:12px;letter-spacing:.24em;color:var(--ink-3);margin-bottom:6px}
+.direct .v{font-family:var(--serif);font-size:clamp(18px,1.6vw,22px);letter-spacing:.1em;color:var(--ink)}
+.direct .v a{border-bottom:1px solid var(--line-2);padding-bottom:2px}
+form{display:grid;gap:34px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.field{display:grid;gap:10px}
+label{font-family:var(--jp);font-size:12px;letter-spacing:.2em;color:var(--ink-2)}
+label em{font-style:normal;font-family:var(--jp);font-size:11px;letter-spacing:.1em;text-transform:none;margin-left:10px;color:var(--ink-3)}
+input,textarea{
+  font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line-2);border-radius:0;
+  padding:8px 0 12px;outline:none;width:100%;transition:border-color .3s;letter-spacing:.06em;
+}
+textarea{min-height:140px;resize:vertical}
+input:focus,textarea:focus{border-color:var(--ink)}
+input::placeholder,textarea::placeholder{color:var(--ink-3)}
+.consent{font-size:12px;color:var(--ink-3);line-height:1.9;max-width:40em}
+.btn{background:transparent;border:0;padding:0;cursor:pointer;color:var(--ink);justify-self:start}
+.status{font-size:13px;color:var(--ink-2);min-height:1.6em}
+:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+@media (max-width:820px){.contact .grid{grid-template-columns:1fr}}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+footer{position:relative;z-index:2;padding:64px 0 36px;background:var(--ink);color:#E6E3DC}
+footer .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+footer .brand .mark img{height:132px}
+footer .brand p{margin-top:18px;font-family:var(--serif);font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(230,227,220,.6)}
+footer .k{font-family:var(--jp);font-size:12px;letter-spacing:.24em;color:rgba(230,227,220,.6);margin-bottom:16px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:13.5px;letter-spacing:.2em}
+footer .addr{font-family:var(--jp);font-size:13.5px;letter-spacing:.08em;line-height:2;color:rgba(230,227,220,.8)}
+footer .bottom{margin-top:56px;padding-top:22px;border-top:1px solid rgba(230,227,220,.18);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--serif);font-size:12px;letter-spacing:.24em;color:rgba(230,227,220,.6)}
+@media (max-width:820px){footer .wrap{grid-template-columns:1fr 1fr}footer .brand{grid-column:span 2}}
+@media (max-width:520px){footer .wrap{grid-template-columns:1fr}footer .brand{grid-column:span 1}}
+</style>
+</head>
+<body>
+
+<header class="top" id="header">
+  <a class="mark" href="#top" aria-label="Ashley"><img class="light" src="assets/logo_ash_white.png" alt="Ashley"><img class="dark" src="assets/logo_ash_black.png" alt="Ashley"></a>
+  <nav class="nav" aria-label="サイト内">
+    <a href="#business">事業内容</a>
+    <a href="#philosophy">理念</a>
+    <a href="#company">会社概要</a>
+    <a href="https://s2-apparel.ashleyofficial.com/" target="_blank" rel="noopener">オンラインストア</a>
+    <a href="#contact">お問い合わせ</a>
+  </nav>
+  <a class="cta" href="#contact">お問い合わせ</a>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Ashley LLC.">
+    <div class="photo" aria-hidden="true"><img src="assets/photos/tree_mist_S297j2CsdlM_simonfromengland.jpg" alt=""></div>
+    <div class="h">
+      <h1>
+        <span class="l"><span>自分らしく</span></span>
+        <span class="l"><span>成長していく場所。</span></span>
+      </h1>
+      <ul class="lede">
+        <li>ライブクリエイターマネジメント</li>
+        <li>アパレルブランド「Ashley」</li>
+      </ul>
+    </div>
+    <div class="scroll" aria-hidden="true">Scroll</div>
+  </section>
+
+  <section id="business" class="business">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>事業内容<em>Business</em></h2>
+      </div>
+      <div class="biz-list">
+        <article class="biz reveal">
+          <div>
+            <div class="cat">Live Creator Management</div>
+            <h3>Manage<span class="jp">ライブクリエイターマネジメント</span></h3>
+          </div>
+          <div class="body">
+            <p>ライブ配信で活動するクリエイターを、データと対話の両面から支えます。配信実績の分析と月次のフィードバック、目標の設計、面談による伴走を通じて、一人ひとりが長く活躍できる土台をつくります。</p>
+            <div class="meta"><span>取引先</span><b>株式会社Bcode</b><span>領域</span><b>ライブ配信クリエイターのマネジメント</b></div>
+          </div>
+        </article>
+        <article class="biz reveal">
+          <div>
+            <div class="cat">Apparel — Ashley</div>
+            <h3>Apparel<span class="jp">アパレル事業</span></h3>
+          </div>
+          <div class="body">
+            <p>自社ブランド「Ashley」を企画・販売しています。フィットネスウェアの機能性を、そのまま街で着られるかたちに。素材選びから縫製まで、自分たちの目と肌で確かめた服だけを届けます。</p>
+            <a class="sl" href="https://s2-apparel.ashleyofficial.com/" target="_blank" rel="noopener"><span class="w" data-text="オンラインストア"></span><span class="arrow"></span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy" class="philo">
+    <div class="box">
+      <div class="pic reveal"><img src="assets/photos/tree_meadow_sun_t_C3rwiy-J8_leopold_k.jpg" alt="夕方の光が差す草地の木"></div>
+      <div class="txt reveal">
+        <h2><span class="en">Philosophy</span>理念</h2>
+        <p>Ashleyという名前は、Ash（成長する木・トネリコ）とley（その木が育つ開けた場所）からできています。意味は「自然の中で、自分らしく成長していく場所」です。</p>
+        <p>この名前に込めたイメージは、自然との調和、成長と生命力、自由と開放感、しなやかな強さです。</p>
+        <p>クリエイターにとっても服を着る人にとっても、自分らしく成長していける場所でありたい。それがAshleyです。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="company" class="company">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>会社概要<em>Company</em></h2>
+      </div>
+      <div class="grid reveal">
+        <div class="cell"><div class="k">社名</div><div class="v">Ashley合同会社<small>Ashley LLC.</small></div></div>
+        <div class="cell"><div class="k">代表</div><div class="v">代表 田中 大貴<small>Hiroki Tanaka</small></div></div>
+        <div class="cell"><div class="k">設立</div><div class="v">2024年8月<small>August 2024</small></div></div>
+        <div class="cell wide"><div class="k">事業内容</div><div class="v">ライブクリエイターマネジメント事業<br>アパレル事業(Ashley)</div></div>
+        <div class="cell"><div class="k">取引先</div><div class="v">株式会社Bcode</div></div>
+        <div class="cell wide"><div class="k">所在地</div><div class="v">〒104-0053 東京都中央区晴海3-13-1-E4809</div></div>
+        <div class="cell"><div class="k">連絡先</div><div class="v"><a href="tel:0368215813">03-6821-5813</a><small><a href="mailto:tanaka-h@ashleyofficial.com">tanaka-h@ashleyofficial.com</a></small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="sec-head" style="margin-bottom:40px"><h2>お問い合わせ<em>Contact</em></h2></div>
+        <p class="lead">事業のご相談、取材・協業のご依頼は、<br>お気軽にご連絡ください。</p>
+        <p class="sub">内容を確認のうえ、担当より折り返しご連絡いたします。</p>
+      </div>
+      <div class="grid">
+        <div class="direct reveal">
+          <div><div class="k">メール</div><div class="v"><a href="mailto:tanaka-h@ashleyofficial.com">tanaka-h@ashleyofficial.com</a></div></div>
+          <div><div class="k">電話</div><div class="v"><a href="tel:0368215813">03-6821-5813</a></div></div>
+        </div>
+        <form id="form" class="reveal" novalidate>
+          <div class="row">
+            <div class="field"><label for="name">お名前<em>必須</em></label><input id="name" name="name" type="text" autocomplete="name" required placeholder="お名前"></div>
+            <div class="field"><label for="org">会社名</label><input id="org" name="company" type="text" autocomplete="organization" placeholder="会社名(任意)"></div>
+          </div>
+          <div class="field"><label for="email">メールアドレス<em>必須</em></label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+          <div class="field"><label for="msg">お問い合わせ内容<em>必須</em></label><textarea id="msg" name="message" required placeholder="お問い合わせ内容"></textarea></div>
+          <input type="text" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+          <p class="consent">ご記入いただいた個人情報は、お問い合わせへの回答および連絡のためにのみ使用し、ご本人の同意なく第三者に提供することはありません。</p>
+          <button class="btn sl" type="submit"><span class="w" data-text="送信する"></span><span class="arrow"></span></button>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">
+      <a class="mark" href="#top" aria-label="Ashley"><img src="assets/logo_ashley_white.png" alt="Ashley"></a>
+      <p>Ashley LLC. — Tokyo</p>
+    </div>
+    <div>
+      <div class="k">目次</div>
+      <ul>
+        <li><a href="#business">事業内容</a></li>
+        <li><a href="#philosophy">理念</a></li>
+        <li><a href="#company">会社概要</a></li>
+        <li><a href="https://s2-apparel.ashleyofficial.com/" target="_blank" rel="noopener">オンラインストア</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="k">所在地</div>
+      <div class="addr">〒104-0053<br>東京都中央区晴海3-13-1-E4809<br>TEL 03-6821-5813</div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Ashley LLC. All rights reserved.</span>
+      <a href="#top">ページトップ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* split-letter links */
+  document.querySelectorAll('.sl .w').forEach(function(w){
+    var t = w.getAttribute('data-text') || '';
+    w.textContent = '';
+    for (var i=0;i<t.length;i++){ var b=document.createElement('b'); b.textContent=t[i]; b.setAttribute('data-c',t[i]); b.style.transitionDelay=(i*18)+'ms'; w.appendChild(b); }
+  });
+
+  /* hero in */
+  function ready(){ document.documentElement.classList.add('ready'); }
+  if (reduce) { ready(); } else { setTimeout(ready, 200); }
+
+  /* header: transparent over the photo, light once scrolled */
+  var header = document.getElementById('header');
+  function onScroll(){ if (window.scrollY > 60) header.classList.add('scrolled'); else header.classList.remove('scrolled'); }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* reveal on scroll */
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {rootMargin:'0px 0px -10% 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in'); }); }
+
+  /* contact form */
+  var FORM_ENDPOINT = ""; /* Web3Forms等のURLを設定すると直接送信。未設定時はメールソフトを開く */
+  var TO = "tanaka-h@ashleyofficial.com";
+  var form = document.getElementById('form'), status = document.getElementById('status');
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    if (!form.checkValidity()) { status.textContent = '必須項目をご確認ください。'; form.reportValidity(); return; }
+    if (form.botcheck.value) return;
+    var d = new FormData(form);
+    if (!FORM_ENDPOINT) {
+      var body = '会社名: ' + (d.get('company')||'-') + '\nお名前: ' + d.get('name') + '\nメール: ' + d.get('email') + '\n\n' + d.get('message');
+      location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent('【お問い合わせ】' + d.get('name') + ' 様') + '&body=' + encodeURIComponent(body);
+      status.textContent = 'メールソフトが開きます。送信してお問い合わせを完了してください。';
+      return;
+    }
+    status.textContent = '送信しています…';
+    d.append('subject', '【Ashley LLC. お問い合わせ】' + d.get('name') + ' 様');
+    fetch(FORM_ENDPOINT, {method:'POST', body:d, headers:{'Accept':'application/json'}})
+      .then(function(r){ return r.json(); })
+      .then(function(j){ if (j.success) { form.reset(); status.textContent = '送信しました。担当より折り返しご連絡いたします。'; } else { throw new Error(); } })
+      .catch(function(){ status.textContent = '送信できませんでした。お手数ですが ' + TO + ' 宛にメールでご連絡ください。'; });
+  });
+})();
+</script>
+</body>
+</html>
